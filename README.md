@@ -1,1 +1,3 @@
-# codility_test
+# Codility Lessons
+
+1. Iterations
