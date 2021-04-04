@@ -6,8 +6,8 @@ fun solution(A: IntArray): Int {
             carToEast++
         } else {
             passing += carToEast
+            if (passing > 1_000_000_000) return -1
         }
     }
-    if (passing > 1_000_000_000 || passing < 0) return -1
     return passing
 }
