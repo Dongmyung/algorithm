@@ -1,5 +1,10 @@
 fun solution(A: IntArray): Int {
-    val N = A.size
-    val supposedToBeSum = (N+2)*(N+1)/2 // use math 1..N+1 Sum
-    return supposedToBeSum - A.sum()
+    var B = BooleanArray(A.size+1)
+    for (i in A.indices) {
+        B.set(A[i]-1, true)
+    }
+    for (i in B.indices) {
+        if (!B[i]) return i+1
+    }
+    return 0
 }
