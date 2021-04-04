@@ -1,13 +1,13 @@
 fun solution(A: IntArray): Int {
-    var cnt = 0
+    var passing = 0
+    var carToEast = 0
     for (i in A.indices) {
         if (A[i] == 0) {
-            for (idx in i..A.lastIndex) {
-                if (A[idx] == 1) {
-                    cnt++
-                }
-            }
+            carToEast++
+        } else {
+            passing += carToEast
         }
-    }   
-    return cnt
+    }
+    if (passing > 1_000_000_000) return -1
+    return passing
 }
