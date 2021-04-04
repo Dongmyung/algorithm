@@ -7,7 +7,9 @@ fun solution(A: IntArray): Int {
     if (max <= 0) return 1
     var B = BooleanArray(max)
     for (i in A.indices) {
-        B[A[i]-1] = true
+        if (A[i] > 0) {
+            B[A[i]-1] = true
+        }
     }
     for (i in B.indices) {
         if (!B[i]) return i+1
