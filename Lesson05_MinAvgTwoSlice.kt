@@ -1,15 +1,17 @@
 fun solution(A: IntArray): Int {
-    var minAvg = Double.MAX_VALUE
+    var minAvg = (A[0]+A[1])/2f
     var minIdx = 0
-    for (i in 0..A.lastIndex) {
-        var curSum = A[i]
-        for (j in (i+1)..A.lastIndex) {
-            curSum += A[j]
-            val avg = curSum.toDouble()/(j-i+1)
-            if (minAvg > (avg)) {
-                minAvg = avg
-                minIdx = i
-            }
+    for (i in 2..(A.lastIndex)) {
+        var avg = (A[i-1]+A[i])/2f
+        if (avg < minAvg) {
+            minAvg = avg
+            minIdx = i-1
+        }
+
+        avg = (A[i-2]+A[i-1]+A[i])/3f
+        if (avg < minAvg) {
+            minAvg = avg
+            minIdx = i-2
         }
     }
     return minIdx
