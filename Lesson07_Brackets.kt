@@ -6,7 +6,7 @@ fun solution(S: String): Int {
         if (isStartNesting(c)) {
             stack.push(c)
         } else {
-            if (stack.size > 0) {
+            if (!stack.empty()) {
                 val cPop = stack.pop()
                 if (cPop == null || !isMatchingNestingChar(cPop, c)) return 0
             } else {
@@ -14,8 +14,8 @@ fun solution(S: String): Int {
             }
         }
     }
-    if (stack.size > 0) return 0
-    return 1
+    if (stack.empty()) return 1
+    return 0
 }
 
 private fun isStartNesting(c: Char): Boolean {
