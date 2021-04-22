@@ -8,7 +8,7 @@ fun solution(S: String): Int {
         } else {
             if (!stack.empty()) {
                 val cPop = stack.pop()
-                if (cPop == null || !isMatchingNestingChar(cPop, c)) return 0
+                if (!isMatchingNestingChar(cPop, c)) return 0
             } else {
                 return 0
             }
