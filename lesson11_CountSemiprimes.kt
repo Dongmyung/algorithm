@@ -1,16 +1,20 @@
 fun solution(N: Int, P: IntArray, Q: IntArray): IntArray {
     val F = getArrayF(N)
 
+    var acm = IntArray(N+1)
+    var sum = 0
+    for (i in 1..N) {
+        if (F[i] > 0 && F[i/F[i]] == 0) {
+            sum++
+        }
+        acm[i] = sum
+    }
+
     var ret = IntArray(P.size)
     for (i in 0 until P.size) {
-        var count = 0
-        for (j in P[i]..Q[i]) {
-            if (F[j] > 0 && F[j/F[j]] == 0) {
-                count++
-            }
-        }
-        ret[i] = count
+        ret[i] = acm[Q[i]] - acm[P[i]-1]
     }
+
     return ret
 }
 
