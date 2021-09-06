@@ -1,33 +1,23 @@
-import java.util.ArrayList;
-import java.util.List;
-
 class LV2_5주차_모음사전 {
-    final int MAX_WORD_LENGTH = 5;
     char[] chars = {'A', 'E', 'I', 'O', 'U' };
-    List<String> data;
 
     public int solution(String word) {
-        int answer = 0;
-        data = new ArrayList<>(10000);
-        for (int i = 0; i < chars.length; i++) {
-            addStringToData("", chars[i]);
+        int answer = word.length();
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            if (c == chars[0]) continue;
+            int temp = 0;
+            for (int k = 0; k < chars.length-i; k++) {
+                temp += Math.pow(chars.length, k);
+            }
+            answer += temp * getIdx(c);
         }
-        return data.indexOf(word)+1;
-    }
-
-    private void addStringToData(String s, char c) {
-        if (s.length() >= 5) return;
-        String str = s + c;
-        data.add(str);
-        for (int i = 0; i < chars.length; i++) {
-            addStringToData(str, chars[i]);
-        }
+        return answer;
     }
 
     private int getIdx(char c) {
-        char[] data = {' ', 'A', 'E', 'I', 'O', 'U' };
-        for (int i = 0; i < data.length; i++) {
-            if (data[i] == c) return i;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == c) return i;
         }
         return -1;
     }
